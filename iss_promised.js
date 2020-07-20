@@ -15,7 +15,7 @@ const fetchISSFlyOverTimes = (body) => {
   return request(url);
 };
 
-const nextISSTimesForMyLocation = function() {
+const nextISSTimesForMyLocation = () => {
   return fetchMyIP()
     .then(fetchCoordsByIP)
     .then(fetchISSFlyOverTimes)
