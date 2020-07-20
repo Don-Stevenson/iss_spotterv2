@@ -4,8 +4,12 @@ const printPassTimes = passTimes => {
   passTimes.forEach(element => {
     const datetime = new Date(0);
     datetime.setUTCSeconds(element.risetime);
-    const duration = element.duration;
-    console.log(`Next pass at ${datetime} for ${duration} seconds!`);
+    const minutes = Math.floor(element.duration / 60);
+    const seconds = element.duration - minutes * 60;
+    console.log(`The next pass will be at ${datetime}
+for a total time of ${minutes}:${seconds} (mins:secs)!
+`);
+
   });
 
 };
@@ -15,5 +19,5 @@ nextISSTimesForMyLocation()
     printPassTimes(passTimes);
   })
   .catch(error => {
-    console.log("It didn't work: ", error.message);
+    console.error(error.message);
   });
